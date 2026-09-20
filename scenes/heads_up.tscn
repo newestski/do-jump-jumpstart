@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dc2gfc2q80sne"]
+
+[ext_resource type="Script" uid="uid://daarpheidmjsy" path="res://scripts/coin_counter_ui.gd" id="1_x7wbm"]
+[ext_resource type="Script" uid="uid://cponb8j34e2ar" path="res://scripts/timer.gd" id="2_yy3y8"]
+
+[node name="HeadsUp" type="Control" unique_id=1088951544]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1940656820]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=53063755]
+layout_mode = 2
+
+[node name="CoinCounter" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1878264221]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Coins: 0/0"
+script = ExtResource("1_x7wbm")
+
+[node name="Timer" type="Label" parent="MarginContainer/VBoxContainer" unique_id=337599532]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Time: 0:00.00"
+script = ExtResource("2_yy3y8")
+
+[node name="DeathMessage" type="PanelContainer" parent="." unique_id=251137036 groups=["death_message"]]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -21.5
+offset_right = 130.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DeathMessage" unique_id=404344095]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathMessage/MarginContainer" unique_id=1495327139]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DeathMessage/MarginContainer/VBoxContainer" unique_id=2039214958]
+layout_mode = 2
+text = "You ran out of time! Henery was killed by his debtors."
+
+[node name="WinMessage" type="PanelContainer" parent="." unique_id=952615174 groups=["win_message"]]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -21.5
+offset_right = 130.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WinMessage" unique_id=925836185]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMessage/MarginContainer" unique_id=536574632]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WinMessage/MarginContainer/VBoxContainer" unique_id=284962127]
+layout_mode = 2
+text = "You won! However, unfortunatly Henery has still 
+commited to many crimes to be allowed to live."

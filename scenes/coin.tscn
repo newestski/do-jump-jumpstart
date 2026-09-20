@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bgpf16a2v5uf4"]
+
+[ext_resource type="Script" uid="uid://dvogbyfwbpsoa" path="res://scripts/coin.gd" id="1_i64fm"]
+[ext_resource type="Texture2D" uid="uid://degx35qqgrsbt" path="res://assets/sprites/coin.png" id="1_rwqht"]
+[ext_resource type="AudioStream" uid="uid://sn2836hv8d6y" path="res://assets/audio/pickupCoin.wav" id="3_11l1o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i64fm"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11l1o"]
+atlas = ExtResource("1_rwqht")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d14el"]
+atlas = ExtResource("1_rwqht")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ikuy"]
+atlas = ExtResource("1_rwqht")
+region = Rect2(14, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnlwo"]
+atlas = ExtResource("1_rwqht")
+region = Rect2(21, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jig8b"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11l1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d14el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ikuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnlwo")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Coin" type="Node2D" unique_id=930173712 groups=["coin"]]
+script = ExtResource("1_i64fm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=691636326]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1007287623]
+shape = SubResource("CircleShape2D_i64fm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=987122263]
+sprite_frames = SubResource("SpriteFrames_jig8b")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.050322976
+
+[node name="AudioCoin" type="AudioStreamPlayer2D" parent="." unique_id=1956837602]
+stream = ExtResource("3_11l1o")

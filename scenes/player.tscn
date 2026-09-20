@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cwrydk5weuviu"]
+
+[ext_resource type="Script" uid="uid://cacycwt3qcj2m" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://cklds1khwev3c" path="res://assets/sprites/henery.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://djsnchx1fk0ec" path="res://assets/audio/explosion.mp3" id="3_qhqgy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_28aoi"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="Gradient" id="Gradient_g2els"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.32941177, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
+gradient = SubResource("Gradient_g2els")
+width = 16
+height = 16
+
+[sub_resource type="Curve" id="Curve_dqkch"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qlg0r"]
+offsets = PackedFloat32Array(0, 0.0862069, 0.7413793)
+colors = PackedColorArray(1, 1, 1, 0.839599, 1, 0, 0, 1, 0.28235295, 0, 0, 0)
+
+[node name="Player" type="CharacterBody2D" unique_id=693994212 groups=["player"]]
+z_index = 1
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1826154671]
+shape = SubResource("CapsuleShape2D_28aoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1433242949]
+position = Vector2(0, 1.7881393e-07)
+texture = ExtResource("2_qhqgy")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1253872346]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1139966736]
+emitting = false
+texture = SubResource("GradientTexture2D_qhqgy")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 15
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 19.85
+initial_velocity_max = 55.56
+linear_accel_min = -60.0
+linear_accel_max = -60.0
+angle_min = -945.5
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_dqkch")
+color_ramp = SubResource("Gradient_qlg0r")
+hue_variation_min = -0.12
+hue_variation_max = 0.02
+
+[node name="AudioExplosion" type="AudioStreamPlayer2D" parent="." unique_id=1511554087]
+stream = ExtResource("3_qhqgy")
